@@ -1,0 +1,30 @@
+{
+    "books": [
+        {
+            "name": "Twilight",
+            "category": "Vampire & Romance",
+            "price": 420,
+            "pic_url": "Images/twilight.jpg"
+        },
+        {
+            "name": "Fantastic Beasts The Secret Of Dumbeldore",
+            "category": "Fantastic Beasts The Secret Of Dumbeldore",
+            "price": 480,
+            "pic_url": "Images/fantastic-beasts.jpg"
+        }
+    ],
+    "music": [
+        {
+            "name": "Enemy",
+            "category": "Pop & Rock",
+            "price": 100,
+            "pic_url": "Images/enemy.jpg"
+        },
+        {
+            "name": "Night Visions",
+            "category": "Pop & Rock",
+            "price": 80,
+            "pic_url": "Images/night-visions.jpg"
+        }
+    ]
+}
