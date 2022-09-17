@@ -1,8 +1,9 @@
 import { Button, Menu, MenuItem, Stack, SxProps, Typography } from "@mui/material";
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
-import React from "react";
+import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { useAppSelector } from "../../../app/hooks";
+import { useAppDispatch, useAppSelector } from "../../../app/hooks";
+import { addFilter } from "../../../features/product/productSlice";
 
 
 const sxCapitilize: SxProps = {
@@ -14,20 +15,23 @@ const sxCapitilize: SxProps = {
 
 export const MenuList = () => {
 
-    const keys = useAppSelector(state => state.product.keys);
-    const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
+    const {keys} = useAppSelector(state => state.product);
+    const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
     const open = Boolean(anchorEl);
+    const navigate = useNavigate();
+    const dispatch = useAppDispatch();
+
     const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
         setAnchorEl(event.currentTarget);
     };
+
     const handleClose = (link:string) => {
         setAnchorEl(null);
         navigateTo(link)
     };
 
-    const navigate = useNavigate();
-
     const navigateTo = (link: string)=>{
+        dispatch(addFilter(""));
         navigate(link);
     }
 

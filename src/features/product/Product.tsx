@@ -29,8 +29,9 @@ type categoryProps = {
 }
 
 const ProductSection = ({ category }: categoryProps) => {
-
-    const { products } = useProductHook(category);
+    const {filter} = useAppSelector(state => state.product);
+    const { products } = useProductHook(category, filter);
+    if(products.length === 0) return<></>;
     return (
         <>
             <h3 className="title">{`${category} Section`}</h3>
@@ -49,7 +50,7 @@ const ProductSection = ({ category }: categoryProps) => {
 
 const ProductGrid = () => {
     const {category} = useParams();
-    let categories = useAppSelector(state => state.product.keys);
+    let {keys: categories} = useAppSelector(state => state.product);
     if (category) {
         categories = [category];
     }

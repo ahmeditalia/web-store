@@ -1,4 +1,4 @@
-import { createSlice } from "@reduxjs/toolkit"
+import { createSlice, PayloadAction } from "@reduxjs/toolkit"
 import  products from "./product.json"
 
 export type productType = {
@@ -14,20 +14,26 @@ export type categoryProductsType = {
 
 type initialStateType = {
     products: categoryProductsType,
-    keys: string[]
+    keys: string[],
+    filter: string
 }
 
 const initialState: initialStateType = {
     products,
-    keys: Object.keys(products)
+    keys: Object.keys(products),
+    filter: ""
 }
 
 export const productSlice = createSlice({
     name: 'product',
     initialState,
     reducers: {
-
+        addFilter: (state, action: PayloadAction<string>)=>{
+            state.filter = action.payload;
+        }
     }
 });
+
+export const { addFilter } = productSlice.actions;
 
 export default productSlice.reducer;
