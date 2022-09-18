@@ -6,9 +6,9 @@ function App() {
   return (
     <div className="App">
       <Routes>
-        <Route path='/' element={<Header/>}>
+        <Route path='' element={<Header/>}>
           <Route index element={<ProductGrid/>}/>
-          <Route path='/:category' element={<ProductGrid/>}/>
+          <Route path=':category' element={<ProductGrid/>}/>
         </Route>
       </Routes>
       

@@ -3,6 +3,7 @@ import { useProductHook } from "./useProductHook";
 import "./Product.css";
 import { useAppSelector } from "../../app/hooks";
 import { useParams } from "react-router-dom";
+import { AddForm } from "./AddForm";
 
 type ProductPropsType = {
     category: string,
@@ -13,7 +14,7 @@ export const Product = ({ category, product }: ProductPropsType) => {
     return (
         <div id={product.name} className={`${category} product`}>
             <div className="picture">
-                <img src={require(`../../assets/${product.pic_url}`)} alt={""}/>
+                <img src={`${product.pic_url}`} alt={""} />
             </div>
             <div className="description">
                 <div className="name">{product.name}</div>
@@ -29,9 +30,9 @@ type categoryProps = {
 }
 
 const ProductSection = ({ category }: categoryProps) => {
-    const {filter} = useAppSelector(state => state.product);
+    const { filter } = useAppSelector(state => state.product);
     const { products } = useProductHook(category, filter);
-    if(products.length === 0) return<></>;
+    if (products.length === 0) return <></>;
     return (
         <>
             <h3 className="title">{`${category} Section`}</h3>
@@ -49,13 +50,14 @@ const ProductSection = ({ category }: categoryProps) => {
 }
 
 const ProductGrid = () => {
-    const {category} = useParams();
-    let {keys: categories} = useAppSelector(state => state.product);
+    const { category } = useParams();
+    let { keys: categories } = useAppSelector(state => state.product);
     if (category) {
         categories = [category];
     }
     return (
         <div id="container">
+            <AddForm />
             {categories.map((category) => <ProductSection key={category} category={category} />)}
         </div>
     )

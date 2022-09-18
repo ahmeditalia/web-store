@@ -1,4 +1,5 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit"
+import { formType } from "./AddForm"
 import  products from "./product.json"
 
 export type productType = {
@@ -15,13 +16,13 @@ export type categoryProductsType = {
 type initialStateType = {
     products: categoryProductsType,
     keys: string[],
-    filter: string
+    filter: string,
 }
 
 const initialState: initialStateType = {
     products,
     keys: Object.keys(products),
-    filter: ""
+    filter: "",
 }
 
 export const productSlice = createSlice({
@@ -30,10 +31,22 @@ export const productSlice = createSlice({
     reducers: {
         addFilter: (state, action: PayloadAction<string>)=>{
             state.filter = action.payload;
+        },
+        addProduct: (state, action: PayloadAction<formType>)=>{
+            let categoryProducts = state.products[action.payload.category]
+            if(categoryProducts){
+                state.products[action.payload.category] = [...categoryProducts , action.payload.product]
+            }else{
+                state.products = {
+                    ...state.products,
+                    [action.payload.category]: [action.payload.product]
+                };
+                state.keys = Object.keys(state.products);
+            }
         }
     }
 });
 
-export const { addFilter } = productSlice.actions;
+export const { addFilter, addProduct } = productSlice.actions;
 
 export default productSlice.reducer;

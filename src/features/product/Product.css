@@ -23,11 +23,12 @@
 
 .product {
     display: flex;
+    flex-direction: column;
     border-radius: 1rem;
     box-shadow: 10px 10px 20px rgb(142, 148, 148);
     margin: 1rem 0rem;
     min-width: 20rem;
-    width: 90%;
+    padding: 1rem;
 }
 
 
@@ -55,30 +56,25 @@
     padding-left: 3px;
 }
 
-
-
-
-
-
-.books {
-    flex-direction: column;
-    padding: 1rem;
-}
-
-.books .description {
-    padding: 0.25rem;
-    display: flex;
-    flex-direction: column;
-    height: 100%;
-}
-
-.books .picture img {
+.picture img {
     width: 100%;
     height: 27rem;
     object-fit: cover;
     border-radius: 0.5rem;
 }
 
+
+.description {
+    padding: 0.25rem;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+
+.books {
+    height: 100%;
+}
 .books .price {
     margin-top: auto;
 }
@@ -89,6 +85,8 @@
 
 .music {
     padding: 1rem;
+    flex-direction: row;
+
 }
 
 .music .description {
@@ -101,8 +99,7 @@
 
 .music .picture img {
     width: 7rem;
-    object-fit: cover;
-    border-radius: 0.5rem;
+    height: 7rem;
 }
 
 
@@ -116,9 +113,8 @@
 
     .content {
         display: grid;
-        grid-template-columns: repeat( auto-fit, 20rem);
-        justify-content: center;
-        grid-gap: 4rem;
+        grid-template-columns: repeat( auto-fill, 20rem);
+        grid-gap: 6rem;
         padding-top: 3rem;
         padding-bottom: 7rem;
     }
