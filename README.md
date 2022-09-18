@@ -13,9 +13,9 @@ npm start
 ## View Page
 
 ```
-Open (http://localhost:3000) for Development Version.
+Open http://localhost:3000 for Development Version.
 Or
-Open (https://web-store-six.vercel.app/) for Deployed Version.
+Open https://web-store-six.vercel.app/ for Deployed Version.
 ```
 
 ## Implemented Featues
