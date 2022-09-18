@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
-import { useAppSelector } from "../../app/hooks"
-import { productType } from "./productSlice";
+import { useAppSelector } from "../app/hooks"
+import { productType } from "../redux/productSlice";
 
 export const useProductHook = (category: string, filter: string)=>{
     const [products, setProducts] = useState<productType[]>([]);

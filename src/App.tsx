@@ -1,14 +1,14 @@
 import { Route, Routes } from 'react-router-dom';
-import ProductGrid from './features/product/Product';
-import { Header } from './layout/Header/Header';
+import Header from './layout/Header';
+import Product from './pages/Product';
 
 function App() {
   return (
     <div className="App">
       <Routes>
         <Route path='' element={<Header/>}>
-          <Route index element={<ProductGrid/>}/>
-          <Route path=':category' element={<ProductGrid/>}/>
+          <Route index element={<Product/>}/>
+          <Route path=':category' element={<Product/>}/>
         </Route>
       </Routes>
       

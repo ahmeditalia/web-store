@@ -1,13 +1,33 @@
 import { Search } from "@mui/icons-material"
 import { Box, InputAdornment, TextField } from "@mui/material"
 import { ChangeEvent, useMemo } from "react"
-import { inputFieldStyle, searchIconStyle } from "./SearchField.modules"
 import debounce from 'lodash.debounce';
-import { useAppDispatch } from "../../../app/hooks";
-import { addFilter } from "../../../features/product/productSlice";
+import { useAppDispatch } from "../../app/hooks";
+import { addFilter } from "../../redux/productSlice";
+import { SxProps } from "@mui/material";
 
+const searchIconStyle: SxProps = {
+    fill: 'white'
+}
 
-export const SearchField = () => {
+const inputFieldStyle: SxProps = {
+    alignSelf: "flex-end",
+    backgroundColor: "transparent",
+    paddingX: 0,
+    borderRadius: "4px",
+    width: 'auto',
+    maxWidth: 20,
+    transition: "max-width ease-out 700ms",
+    '&:hover,&:focus-within': {
+        backgroundColor: 'white',
+        maxWidth: { xs: "100%" , md: "18rem"},
+        '& .css-q9ra1i-MuiSvgIcon-root':{
+            fill: "currentcolor"
+        }
+      }
+}
+
+const SearchField = () => {
 
     const dispatch = useAppDispatch();
     const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
@@ -35,3 +55,5 @@ export const SearchField = () => {
     )
 
 }
+
+export default SearchField;

@@ -1,6 +1,6 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit"
-import { formType } from "./AddForm"
-import  products from "./product.json"
+import products from "../data/product.json"
+import { FormDataTypes } from "../features/AddProduct/components/FormikForm"
 
 export type productType = {
     name: string,
@@ -32,7 +32,7 @@ export const productSlice = createSlice({
         addFilter: (state, action: PayloadAction<string>)=>{
             state.filter = action.payload;
         },
-        addProduct: (state, action: PayloadAction<formType>)=>{
+        addProduct: (state, action: PayloadAction<FormDataTypes>)=>{
             let categoryProducts = state.products[action.payload.category]
             if(categoryProducts){
                 state.products[action.payload.category] = [...categoryProducts , action.payload.product]

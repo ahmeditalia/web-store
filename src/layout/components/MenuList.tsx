@@ -2,8 +2,8 @@ import { Button, Menu, MenuItem, Stack, SxProps, Typography } from "@mui/materia
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { useAppDispatch, useAppSelector } from "../../../app/hooks";
-import { addFilter } from "../../../features/product/productSlice";
+import { useAppDispatch, useAppSelector } from "../../app/hooks";
+import { addFilter } from "../../redux/productSlice";
 
 
 const sxCapitilize: SxProps = {
@@ -13,7 +13,7 @@ const sxCapitilize: SxProps = {
 }
 
 
-export const MenuList = () => {
+const MenuList = () => {
 
     const {keys} = useAppSelector(state => state.product);
     const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
@@ -59,3 +59,5 @@ export const MenuList = () => {
         </Stack>
     );
 }
+
+export default MenuList;
